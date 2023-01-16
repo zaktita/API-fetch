@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
+    <title>API fetch</title>
+  </head>
+  <body>
+    <main>
+      <h1>BOOKS LIBRARY</h1>
+      <form>
+        <input
+          type="search"
+          value=""
+          id="inputName"
+          placeholder="search name"
+        />
+        <input
+          type="search"
+          value=""
+          id="inputAuthor"
+          placeholder="search author"
+        />
+        <input
+          type="search"
+          value=""
+          id="inputCategory"
+          placeholder="search category"
+        />
+        <button id="btn" type="button">search</button>
+      </form>
+
+      <div class="cardsContainer" id="cardsContainer">
+        <div class="card" id="card">
+          <div class="card-img">
+            <div class="imgBox" id="imgBox"></div>
+          </div>
+          <div class="card-body">
+            <h4 class="card-title" id="cardTitle">The Alchemist</h4>
+            <h3 class="cardCategory" id="cardCategory">fiction</h3>
+            <p class="card-description" id="cardDescription">
+              The Alchemist is a novel by Brazilian author Paulo Coelho that was
+              first published in 1988
+            </p>
+            <a id="readMore" href=""> Read more</a>
+            <div class="card-price-time">
+              <div class="card-price">
+                <h5 id="cardPrice">200 $</h5>
+              </div>
+              <div class="card-time">
+                <h4 id="cardRating">4.5</h4>
+              </div>
+            </div>
+            <hr />
+            <div class="card-profile">
+              <img src="./blue-user-icon-32.jpg" alt="" />
+              <h4 id="authorName"><span>Author</span> Paulo Coelho</h4>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
