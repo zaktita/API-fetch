@@ -3,6 +3,7 @@ let inputAuthor = document.getElementById("inputAuthor");
 let inputCategory = document.getElementById("inputCategory");
 let btn = document.getElementById("btn");
 
+
 let cardsContainer = document.getElementById("cardsContainer");
 let card = document.getElementById("card");
 
@@ -17,7 +18,7 @@ let authorName = document.getElementById("authorName");
 let readMore = document.getElementById("readMore");
 
 
-
+// fetch data from 
   async function getData(url) {
   try {
     const response = await fetch(url);
@@ -33,19 +34,20 @@ let readMore = document.getElementById("readMore");
 
   getData("./Books.json").then(data => {
     let arr = data.books
-    console.table(arr)
+    // console.table(arr)
     createCard(arr)
+    removeOriginal()
     filter(arr)
 
   });
 
+  // clone the original card 
 
   function createCard(arr){
     for(let i=0; i<arr.length; i++){
       let newCard = card.cloneNode(true)
       card.classList.add('new')
-      // let readmore = document.createElement('a')
-      // cardDescription.appendChild(readmore);
+
       cardsContainer.appendChild(newCard);
       cardTitle.innerHTML = arr[i].name
       cardPrice.innerHTML = arr[i].price + ' $'
@@ -53,24 +55,20 @@ let readMore = document.getElementById("readMore");
       authorName.innerText = arr[i].author
       cardCategory.innerText = arr[i].category
       cardDescription.innerText = description(arr[i].discription)
-      imgBox.style.backgroundImage = `url(${arr[i].image})`
-      cardsContainer.children[1].style.display = 'none'
-    
-    
-    
-     
-    
+      imgBox.style.backgroundImage = `url(${arr[i].image})`    
     }
+  }
+
+  function removeOriginal(){
+    cardsContainer.children[1].remove()
   }
 
   function description(description){
     return description.slice(0,90)+'....'
-    // console.log(typeof(description))
-     
   }
 
 
- 
+ // filter the results
 
 function filter(arr){
   btn.addEventListener('click',()=>{
@@ -82,24 +80,24 @@ function filter(arr){
         
         if(inputAuthor.value.toUpperCase()==arr[i].author.toUpperCase()){
           console.log(i+' '+arr[i].author.toUpperCase())
-          cardsContainer.children[i+2].style.display = 'block'
+          cardsContainer.children[i+1].style.display = 'block'
         }
         if(inputName.value.toUpperCase()==arr[i].name.toUpperCase()){
           console.log(i+' '+arr[i].name.toUpperCase())
           Array.from(cardsContainer.children).forEach(element => {
             element.style.display = 'none'
           });
-          cardsContainer.children[i+2].style.display = 'block'
+          cardsContainer.children[i+1].style.display = 'block'
         }
         if(inputCategory.value.toUpperCase()==arr[i].category.toUpperCase()){
           console.log(i+' '+arr[i].name.toUpperCase())
-          cardsContainer.children[i+2].style.display = 'block'
+          cardsContainer.children[i+1].style.display = 'block'
           if(inputName.value.toUpperCase()==arr[i].name.toUpperCase()){
           Array.from(cardsContainer.children).forEach(element => {
             element.style.display = 'none'
           });
             console.log(i+' '+arr[i].author.toUpperCase())
-            cardsContainer.children[i+2].style.display = 'block'
+            cardsContainer.children[i+1].style.display = 'block'
             break
           }
         }
